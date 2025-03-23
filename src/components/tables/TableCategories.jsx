@@ -12,7 +12,7 @@ const TableCategories = ({categories,onEdit,onDelete}) => {
         </Table.Head>
         <Table.Body className="divide-y">
         {categories.map((category) => (
-             <Table.Row className="bg-white">
+             <Table.Row className="bg-white" key={category.id}>
                   <Table.Cell className='text-slate-950'>{category.name}</Table.Cell>
                   <Table.Cell className='flex justify-end'>
                           <div className='flex flex-row gap-2'>

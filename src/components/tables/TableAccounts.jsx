@@ -11,7 +11,7 @@ const TableAccounts = ({accounts,onEdit,onDelete}) => {
         </Table.Head>
         <Table.Body className="divide-y">
         {accounts.map((account) => (
-             <Table.Row className="bg-white">
+             <Table.Row className="bg-white" key={account.id}>
                   <Table.Cell className='text-slate-950'>{account.name}</Table.Cell>
                   <Table.Cell className='flex justify-end'>
                           <div className='flex flex-row gap-2'>

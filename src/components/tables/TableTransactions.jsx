@@ -16,7 +16,7 @@ const TableTransactions = ({transactions,onEdit,onDelete}) => {
         </Table.Head>
         <Table.Body className="divide-y">
         {transactions.map((transaction) => (
-             <Table.Row className="bg-white">
+             <Table.Row className="bg-white" key={transaction.id}>
                   <Table.Cell className='text-slate-950'>{transaction.description}</Table.Cell>
                   <Table.Cell className='text-slate-950'>{formataHora(transaction.createdAt)}</Table.Cell>
                   <Table.Cell className='text-slate-950'>{transaction.category.name}</Table.Cell>

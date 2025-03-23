@@ -1,4 +1,5 @@
 import Barchart from "../../components/charts/Barchart"
+import PizzaChart from "../../components/charts/PizzaChart"
 
 const Dashboard = () => {
   return (
@@ -7,7 +8,7 @@ const Dashboard = () => {
       <div className='flex w-full flex-row justify-between mb-4'>
         <h1 className='text-3xl font-semibold'>Dashboard</h1>
       </div>
-      <Barchart/>
+      <PizzaChart/>
      
     </div>
   )
