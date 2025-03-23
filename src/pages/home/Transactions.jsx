@@ -177,6 +177,7 @@ const previousDay = () => {
             <span className="text-base h-7">{formataData(data)}</span>
             <LuChevronRight onClick={nextDay} className='w-7 h-7'/>
         </div>
+        {isLoadingList&&<Spinner className='absolute top-1/2 left-1/2' color='gray' size="xl" />}
         {!isLoadingList&&transactions.length>0&&<TableTransactions transactions={transactions} onEdit={onEdit} onDelete={onDelete}/>}
         {!isLoadingList&&transactions.length==0&&<EmptyTable buttonLabel='Adicionar Transação' message='Transações não encontradas.' message2='Por favor, escolha outra data ou adicione uma nova transação.' onAdd={onAdd}/>}
         <TransactionModal categories={categories} accounts={accounts} errorMessage={errorMessage} isLoading={isLoading} transaction={transaction} setTransaction={setTransaction} isOpen={isModalOpen} setIsOpen={setIsModalOpen} title={'Nova Transação'}  onSave={addTransaction}/>

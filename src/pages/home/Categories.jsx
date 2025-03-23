@@ -1,4 +1,4 @@
-import { Button } from 'flowbite-react';
+import { Button,Spinner } from 'flowbite-react';
 import {useState,useEffect,useContext} from 'react'
 import api from '../../api/api';
 import AuthContext from '../../context/AuthContext';
@@ -107,7 +107,7 @@ const deleteCategory = async () => {
       <h1 className='text-3xl font-semibold'>Categorias</h1>
       <Button color='dark' onClick={()=>onAdd()}>Nova Categoria</Button>
     </div>
-    <TableCategories categories={categories} onEdit={onEdit} onDelete={onDelete}/>
+    {isLoadingList?<Spinner className='absolute top-1/2 left-1/2' color='gray' size="xl" />:<TableCategories categories={categories} onEdit={onEdit} onDelete={onDelete}/>}
     <CategoryModal errorMessage={errorMessage} isLoading={isLoading} category={category} setCategory={setCategory} isOpen={isModalOpen} setIsOpen={setIsModalOpen} title={'Nova Categoria'} onSave={addCategory}/>
     <CategoryModal errorMessage={errorMessage} isLoading={isLoading} category={category} setCategory={setCategory} isOpen={isModalEditOpen} setIsOpen={setIsModalEditOpen} title={'Editando Categoria'} onSave={updateCategory}/>
     <DeleteModal isLoading={isLoading} deleteAction={deleteCategory} isOpen={isModalDeleteOpen} setIsOpen={setIsModalDeleteOpen} title="Deseja deletar esta categoria ?" description={'Esta operação vai excluir a categoria do banco de dados e não poderá ser revertida.'}/>

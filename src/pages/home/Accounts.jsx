@@ -1,4 +1,4 @@
-import { Button } from 'flowbite-react';
+import { Button,Spinner } from 'flowbite-react';
 import {useState,useEffect,useContext} from 'react'
 import api from '../../api/api';
 import AuthContext from '../../context/AuthContext';
@@ -104,12 +104,12 @@ const deleteAccount = async () => {
 }
 
   return (
-    <div className='w-full p-5  mx-auto'>
+    <div className='w-full p-5 mx-auto'>
         <div className='flex w-full flex-row justify-between mb-4'>
           <h1 className='text-3xl font-semibold'>Contas</h1>
           <Button color='dark' onClick={()=>onAdd()}>Nova Conta</Button>
         </div>
-        <TableAccounts accounts={accounts} onEdit={onEdit} onDelete={onDelete}/>
+        {isLoadingList?<Spinner className='absolute top-1/2 left-1/2' color='gray' size="xl" />:<TableAccounts accounts={accounts} onEdit={onEdit} onDelete={onDelete}/>}
         <AccountModal errorMessage={errorMessage} isLoading={isLoading} account={account} setAccount={setAccount} isOpen={isModalOpen} setIsOpen={setIsModalOpen} title={'Nova Conta'} onSave={addAccount}/>
         <AccountModal errorMessage={errorMessage} isLoading={isLoading} account={account} setAccount={setAccount} isOpen={isModalEditOpen} setIsOpen={setIsModalEditOpen} title={'Editando Conta'} onSave={updateAccount}/>
         <DeleteModal isLoading={isLoading} deleteAction={deleteAccount} isOpen={isModalDeleteOpen} setIsOpen={setIsModalDeleteOpen} title="Deseja deletar esta conta ?" description={'Esta operação vai excluir a conta do banco de dados e não poderá ser revertida.'}/>
