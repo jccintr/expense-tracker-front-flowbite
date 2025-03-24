@@ -6,7 +6,7 @@ import AuthContext from '../../context/AuthContext';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { months,calcularPercentual,gerarCorHexAleatoria } from '../../util/util';
+import { months,gerarCorHexAleatoria } from '../../util/util';
 
 ChartJS.register(ArcElement, Tooltip, Legend,ChartDataLabels);
 
@@ -14,8 +14,12 @@ ChartJS.register(ArcElement, Tooltip, Legend,ChartDataLabels);
 
 
  const options = {
-  
+  responsive: true,
   plugins: {
+    legend: {
+      display:true,
+      position: 'bottom' ,
+    },
     datalabels: {
       formatter: (value, context) => {
         let percentage = (value / context.chart._metasets
@@ -55,7 +59,7 @@ const PizzaChart = () => {
         createChartData(json.accounts,json.total_amount);
         }
         else {
-          setChartData([]);
+          setChartData(null);
         }
       
         setTotal(json.total_amount);

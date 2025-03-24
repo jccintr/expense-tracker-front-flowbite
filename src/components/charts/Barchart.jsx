@@ -5,9 +5,10 @@ import { getWeekNumber } from '../../util/util';
 import { Card,Label } from 'flowbite-react';
 import AuthContext from '../../context/AuthContext';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement} from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Bar } from 'react-chartjs-2';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement);
+ChartJS.register(CategoryScale, LinearScale, BarElement,ChartDataLabels);
   
   export const options = {
     responsive: true,
@@ -20,6 +21,14 @@ ChartJS.register(CategoryScale, LinearScale, BarElement);
         display: false,
         text: 'Gastos Semanais',
       },
+      datalabels: {
+        formatter: (value, context) => {
+          let v = value.toFixed(2);
+         
+          return v;
+      },
+        color: '#ffffff',
+      }
     },
   };
 
@@ -93,8 +102,9 @@ const Barchart = () => {
                 labels:weekDays,
                 datasets:[
                     {
-                        label:'Gastos',
+                        label:'',
                         data:barData,
+                        backgroundColor: 'rgba(0,0,255,0.7)'
                     }
                 ],
             }}/>
