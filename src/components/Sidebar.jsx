@@ -5,7 +5,7 @@ import AuthContext from '../context/AuthContext';
 import { BsBarChartFill } from "react-icons/bs";
 import { RiMoneyDollarCircleLine } from "react-icons/ri"
 import { LuWallet,LuTags,LuLogOut  } from "react-icons/lu";
-import { sideBarCustomTheme } from '../theme/sideBarTheme';
+import { sideBarCustomTheme } from '../theme/SideBarTheme';
 
 const SideBar = () => {
 
