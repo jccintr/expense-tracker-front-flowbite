@@ -1,5 +1,5 @@
-const BASE_API = 'http://192.168.1.12:3333';
-//const BASE_API = 'https://expense-tracker-adonis.up.railway.app'
+//const BASE_API = 'http://192.168.1.12:3333';
+const BASE_API = 'https://expense-tracker-adonis.up.railway.app'
 
 
 export default {

@@ -98,7 +98,7 @@ const Barchart = () => {
             </div>
             <Label className="text-xl font-semibold">R$ {total.toFixed(2)}</Label>
        </div>
-       <Bar options={options} data={{
+       <Bar  options={options} data={{
                 labels:weekDays,
                 datasets:[
                     {
