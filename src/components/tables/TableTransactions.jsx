@@ -21,7 +21,7 @@ const TableTransactions = ({transactions,onEdit,onDelete}) => {
                   <Table.Cell className='text-slate-950'>{formataHora(transaction.createdAt)}</Table.Cell>
                   <Table.Cell className='text-slate-950'>{transaction.category.name}</Table.Cell>
                   <Table.Cell className='text-slate-950'>{transaction.account.name}</Table.Cell>
-                  <Table.Cell className='text-right text-slate-950'>{transaction.amount.toFixed(2)}</Table.Cell>
+                  <Table.Cell className='text-right text-slate-950'>{transaction.amount.toFixed(2).replace('.', ',')}</Table.Cell>
                   <Table.Cell className='flex justify-end'>
                           <div className='flex flex-row gap-2'>
                             <Button size="xs"  color="dark" onClick={()=>onEdit(transaction)}><LuPencil/></Button>

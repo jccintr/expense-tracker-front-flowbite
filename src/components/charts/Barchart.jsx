@@ -1,4 +1,4 @@
-import {useState, useEffect, useContext} from 'react';
+import { useState, useEffect, useContext } from 'react';
 import api from '../../api/api';
 import { LuChevronRight, LuChevronLeft } from "react-icons/lu";
 import { getWeekNumber } from '../../util/util';
@@ -21,8 +21,14 @@ export const options = {
       display: false,
     },
     datalabels: {
-      formatter: (value) => value.toFixed(2),
+      formatter: (value) => {
+        // Formata com 2 casas decimais e troca . por ,
+        return Number(value).toFixed(2).replace('.', ',');
+      },
       color: '#ffffff',
+      font: {
+        weight: 'bold'
+      }
     }
   },
 };
@@ -88,7 +94,9 @@ const Barchart = () => {
           </span>
           <LuChevronRight onClick={nextWeek} className="w-7 h-7 cursor-pointer" />
         </div>
-        <Label className="text-xl font-semibold">R$ {total.toFixed(2)}</Label>
+        <Label className="text-xl font-semibold">
+          R$ {total.toFixed(2).replace('.', ',')}
+        </Label>
       </div>
 
       <div className="flex-1 flex items-center justify-center">

@@ -25,6 +25,9 @@ const options = {
         return percentage;
       },
       color: '#ffffff',
+      font: {
+        weight: 'bold'
+      }
     }
   },
 };
@@ -104,7 +107,9 @@ const DonnutChart = () => {
           </span>
           <LuChevronRight onClick={nextMonth} className="w-7 h-7 cursor-pointer" />
         </div>
-        <Label className="text-xl font-semibold">R$ {total.toFixed(2)}</Label>
+        <Label className="text-xl font-semibold">
+          R$ {total.toFixed(2).replace('.', ',')}
+        </Label>
       </div>
 
       <div className="flex-1 flex items-center justify-center">
