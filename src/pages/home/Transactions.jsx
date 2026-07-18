@@ -96,13 +96,13 @@ const addTransaction = async  () => {
     return;
    }
   
-   
+    setIsLoading(true);
     const response = await api.addTransaction(token,transaction);
     if(response.ok){
       getTransactions(data);
-    
-       setIsModalOpen(false);
+      setIsModalOpen(false);
     }
+    setIsLoading(false);
 
 }
 
@@ -123,13 +123,14 @@ const updateTransaction = async  () => {
     setErrorMessage('Valor inválido.');
     return;
    }
-  
+   setIsLoading(true);
    const response = await api.updateTransaction(token,transaction.id,transaction);
    if(response.ok){
      getTransactions(data);
-     //setIsLoadingTransaction(false);
+    
      setIsModalEditOpen(false);
    }
+   setIsLoading(false);
 }
 
 const deleteTransaction = async () => {
