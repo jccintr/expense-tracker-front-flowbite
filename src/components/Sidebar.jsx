@@ -90,7 +90,7 @@ const sideBarCustomTheme = {
 const SideBar = () => {
 
     const location = useLocation();
-    const [page,setPage] = useState('');
+    const [page,setPage] = useState('transactions');
     const {setLoggedUser,loggedUser} = useContext(AuthContext);
 
     useEffect(()=>{

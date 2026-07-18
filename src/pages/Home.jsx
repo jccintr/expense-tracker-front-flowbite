@@ -11,7 +11,7 @@ import SideBar from '../components/Sidebar';
 
  const Home = () => {
   const location = useLocation();
-  const [page, setPage] = useState('');
+  const [page, setPage] = useState('transactions');
   const [data,setData] = useState(null);
 
 
