@@ -4,6 +4,7 @@ import Transactions from './home/Transactions';
 import Accounts from './home/Accounts';
 import Categories from './home/Categories';
 import Dashboard from './home/Dashboard';
+import Search from './home/Search';
 import SideBar from '../components/Sidebar';
 
 
@@ -31,6 +32,7 @@ import SideBar from '../components/Sidebar';
        {page === 'transactions' && <Transactions />}
        {page === 'accounts' && <Accounts/>}
        {page === 'categories' && <Categories />}
+       {page === 'search' && <Search />}
     </div>
   )
 }

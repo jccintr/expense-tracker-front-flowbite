@@ -5,6 +5,7 @@ import AuthContext from '../context/AuthContext';
 import { BsBarChartFill } from "react-icons/bs";
 import { RiMoneyDollarCircleLine } from "react-icons/ri"
 import { LuWallet,LuTags,LuLogOut  } from "react-icons/lu";
+import { FaSearch } from "react-icons/fa";
 //import { sideBarCustomTheme } from '../theme/SideBarTheme.js';
 
 const sideBarCustomTheme = {
@@ -128,6 +129,9 @@ const SideBar = () => {
               </Link>
               <Link to='/?page=dashboard'>
                     <Sidebar.Item  active={page === 'dashboard' || !page} icon={BsBarChartFill} as='div'>Dashboard</Sidebar.Item>
+              </Link>
+              <Link to='/?page=search'>
+                    <Sidebar.Item  active={page === 'search' || !page} icon={FaSearch} as='div'>Pesquisa</Sidebar.Item>
               </Link>
               <Link to='/?page=categories'>
                     <Sidebar.Item  active={page === 'categories' || !page} icon={LuTags} as='div'>Categorias</Sidebar.Item>
