@@ -262,9 +262,10 @@ const Search = () => {
       
       {!isLoadingList && searchResults.length === 0 && (
         <EmptyTable 
+          showAddButton={false}
           buttonLabel="Adicionar Transação" 
           message="Nenhuma transação encontrada." 
-          message2="Tente ajustar os filtros de pesquisa ou adicione uma nova transação." 
+          message2="Tente ajustar os filtros de pesquisa para obter melhores resultados." 
           onAdd={onAdd} 
         />
       )}

@@ -96,12 +96,29 @@ export function formatarMoeda(valor, moeda = 'BRL', locale = 'pt-BR') {
     
 }
 
+/*
 export function getWeekNumber(date) {
     const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
     const pastDays = (date - firstDayOfYear) / (24 * 60 * 60 * 1000);
     return Math.ceil((pastDays + firstDayOfYear.getDay() + 1) / 7);
   }
 
+  */
+ export function getWeekNumber(date) {
+    // Cria uma cópia da data para não modificar a original
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    
+    // Ajusta para o próximo domingo (semana começa no domingo)
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+    
+    // Pega o primeiro dia do ano
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    
+    // Calcula a semana
+    const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    
+    return weekNo;
+}
  export function gerarCorHexAleatoria() {
     const caracteres = '0123456789ABCDEF';
     let cor = '#';

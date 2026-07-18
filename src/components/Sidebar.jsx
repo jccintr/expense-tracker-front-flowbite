@@ -107,7 +107,7 @@ const SideBar = () => {
       const onLogout = async () => {
 
         setLoggedUser(null);
-        navigate('/login');
+        //navigate('/login');
       
       }
 

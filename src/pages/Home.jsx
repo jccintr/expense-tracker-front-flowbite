@@ -12,14 +12,18 @@ import SideBar from '../components/Sidebar';
  const Home = () => {
   const location = useLocation();
   const [page, setPage] = useState('');
+  const [data,setData] = useState(null);
 
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const pageFromUrl = urlParams.get('page');
+   // const dataFromUrl = urlParams.get('data');
+  //  console.log('datafromurl',dataFromUrl);
     if (pageFromUrl) {
       setPage(pageFromUrl);
     }
+    //if(dataFromUrl) setData(dataFromUrl);
   }, [location.search]);
 
 
@@ -29,7 +33,7 @@ import SideBar from '../components/Sidebar';
         <SideBar/>
       </div>
        {page === 'dashboard' && <Dashboard />}
-       {page === 'transactions' && <Transactions />}
+       {page === 'transactions' && <Transactions dataInicial={data} />}
        {page === 'accounts' && <Accounts/>}
        {page === 'categories' && <Categories />}
        {page === 'search' && <Search />}
