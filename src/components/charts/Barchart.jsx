@@ -90,7 +90,7 @@ const Barchart = () => {
 
     const index = elements[0].index;
     const dayData = weekDaysData[index];
-
+    console.log('dayData', dayData);
     if (dayData && dayData.date) {
       setSelectedDate(dayData.date);
       setShowModal(true);

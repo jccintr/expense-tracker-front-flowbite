@@ -29,7 +29,7 @@ const DayTransactionsModal = ({
       const response = await api.getTransactions(date, token);
       if (response.ok) {
         const data = await response.json();
-        setTransactions(data); // assumindo que retorna um array direto
+        setTransactions(data); 
       } else {
         setError('Erro ao carregar transações');
       }
@@ -66,7 +66,10 @@ const DayTransactionsModal = ({
   return (
     <Modal show={isOpen} onClose={onClose} size="2xl">
       <Modal.Header>
-        Transações do dia {new Date(selectedDate).toLocaleDateString('pt-BR')}
+        Transações do dia{' '}
+        {selectedDate 
+          ? selectedDate.split('-').reverse().join('-') 
+          : ''}
       </Modal.Header>
       <Modal.Body>
         {isLoading ? (
