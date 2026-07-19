@@ -3,7 +3,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { Table, Button } from "flowbite-react";
 import { formataHora } from "../../util/util";
 
-const TableTransactions = ({ transactions, onEdit, onDelete }) => {
+const TableTransactions = ({ transactions, onEdit, onDelete, showActions = true }) => {
 
   // Calcula o total das transações
   const total = transactions.reduce((acc, transaction) => {
@@ -19,7 +19,7 @@ const TableTransactions = ({ transactions, onEdit, onDelete }) => {
           <Table.HeadCell>Categoria</Table.HeadCell>
           <Table.HeadCell>Conta</Table.HeadCell>
           <Table.HeadCell className='text-right'>Valor</Table.HeadCell>
-          <Table.HeadCell className='flex justify-end'>Ações</Table.HeadCell>
+          {showActions && <Table.HeadCell className='flex justify-end'>Ações</Table.HeadCell>}
         </Table.Head>
         <Table.Body className="divide-y">
           {transactions.map((transaction) => (
@@ -31,7 +31,7 @@ const TableTransactions = ({ transactions, onEdit, onDelete }) => {
               <Table.Cell className='text-right text-slate-950'>
                 {transaction.amount.toFixed(2).replace('.', ',')}
               </Table.Cell>
-              <Table.Cell className='flex justify-end'>
+              {showActions && <Table.Cell className='flex justify-end'>
                 <div className='flex flex-row gap-2'>
                   <Button size="xs" color="dark" onClick={() => onEdit(transaction)}>
                     <LuPencil />
@@ -40,7 +40,7 @@ const TableTransactions = ({ transactions, onEdit, onDelete }) => {
                     <FaRegTrashAlt />
                   </Button>
                 </div>
-              </Table.Cell>
+              </Table.Cell>}
             </Table.Row>
           ))}
         </Table.Body>

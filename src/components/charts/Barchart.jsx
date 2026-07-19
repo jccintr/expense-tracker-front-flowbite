@@ -7,6 +7,7 @@ import AuthContext from '../../context/AuthContext';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Bar } from 'react-chartjs-2';
+import DayTransactionsModal from '../modals/DayTransactionsModal';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ChartDataLabels);
 
@@ -39,6 +40,7 @@ const Barchart = () => {
   const [barData, setBarData] = useState([]);
   const [weekDaysData, setWeekDaysData] = useState([]); // ← Novo: guarda todos os dados do dia
   const [isLoading, setIsLoading] = useState(false);
+ 
 
   // Estado do Modal
   const [selectedDate, setSelectedDate] = useState(null);
@@ -86,15 +88,12 @@ const Barchart = () => {
   const handleBarClick = (event, elements) => {
     if (elements.length === 0) return;
 
-    const index = elements[0].index; // índice da barra clicada (0 a 6)
+    const index = elements[0].index;
     const dayData = weekDaysData[index];
 
     if (dayData && dayData.date) {
       setSelectedDate(dayData.date);
-     // setShowModal(true);
-      // Aqui você pode chamar uma API para buscar as transações do dia
-      // fetchTransactions(dayData.date);
-      console.log(dayData.date)
+      setShowModal(true);
     }
   };
 
@@ -132,26 +131,13 @@ const Barchart = () => {
         />
       </div>
 
-      {/* Modal de Transações */}
-      {showModal && selectedDate && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg w-[90%] max-w-2xl max-h-[90vh] overflow-auto">
-            <h2 className="text-xl font-bold mb-4">
-              Transações de {new Date(selectedDate).toLocaleDateString('pt-BR')}
-            </h2>
-            
-            {/* Aqui você vai renderizar a lista de transações */}
-            <p>Carregando transações do dia {selectedDate}...</p>
-            
-            <button 
-              onClick={() => setShowModal(false)}
-              className="mt-6 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700"
-            >
-              Fechar
-            </button>
-          </div>
-        </div>
-      )}
+     
+      <DayTransactionsModal 
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        selectedDate={selectedDate}
+        token={token}
+      />
     </Card>
   );
 };
