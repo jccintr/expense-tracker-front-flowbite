@@ -28,7 +28,7 @@ export const options = {
   }
 };
 
-const weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
+const weekDays = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab','Dom'];
 const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
 
 const Barchart = () => {
@@ -49,6 +49,7 @@ const Barchart = () => {
   useEffect(() => {
     const today = new Date();
     const weekAtual = getWeekNumber(today);
+    console.log('week atual =>',weekAtual);
     setWeek(weekAtual);
     getData(weekAtual);
   }, []);
